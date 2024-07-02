@@ -4,9 +4,9 @@ const Navbar = () => {
   return (
     <div className="w-full relative flex justify-center">
 
-      <div className="fixed z-50 flex justify-end space-x-2 my-5 w-11/12 md:w-10/12">
-        <button className="bg-white  text-custom-blue hover:text-white hover:bg-red-700 p-3 px-4 shadow-2xl">Contact Us</button>
-        <button className="bg-white  text-custom-blue hover:text-white hover:bg-red-700 p-3 px-4 shadow-2xl">Translate</button>
+      <div className="fixed z-50 flex justify-end space-x-2 my-5 w-11/12 md:w-10/12 ">
+        <button className="bg-white  text-custom-blue hover:text-white hover:bg-red-700 lg:p-3 p-2 px-4 shadow-2xl">Contact Us</button>
+        <button className="bg-white  text-custom-blue hover:text-white hover:bg-red-700 lg:p-3 p-2 px-4 shadow-2xl">Translate</button>
       </div>
 
       <nav className="fixed bg-white dark:bg-gray-900  w-11/12 md:w-10/12 z-20 my-20 border-b border-gray-200 dark:border-gray-600 shadow-2xl">
