@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import React, { useRef } from "react"
-import Image from "next/image"
-import InsightSlider from "react-slick"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
-import { testimonials } from "@utils/data"
-import TestimonialsCard from "./TestimonialsCard"
-import { leftArrow, rightArrow } from "@utils/Icon"
+import React, { useRef } from "react";
+import Image from "next/image";
+import InsightSlider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { testimonials } from "@utils/data";
+import TestimonialsCard from "./TestimonialsCard";
+import { leftArrow, rightArrow } from "@utils/Icon";
 
 const Testimonials = () => {
-  const sliderRef = useRef(null)
+  const sliderRef = useRef(null);
 
   const NextArrow = () => (
     <div
@@ -19,7 +19,7 @@ const Testimonials = () => {
     >
       {rightArrow}
     </div>
-  )
+  );
 
   const PrevArrow = () => (
     <div
@@ -28,7 +28,7 @@ const Testimonials = () => {
     >
       {leftArrow}
     </div>
-  )
+  );
 
   var setting = {
     speed: 500,
@@ -57,7 +57,7 @@ const Testimonials = () => {
         },
       },
     ],
-  }
+  };
 
   return (
     <>
@@ -87,7 +87,7 @@ const Testimonials = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Testimonials
+export default Testimonials;

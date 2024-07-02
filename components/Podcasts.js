@@ -46,7 +46,7 @@ const Podcasts = () => {
   }
 
   return (
-    <div className="space-y-10 pb-10 flex flex-col items-center mt-16 md:mt-[520px]">
+    <div className="space-y-10 pb-10 flex flex-col items-center mt-16 md:mt-[590px]">
       <h1 className="text-custom-blue text-2xl font-semibold text-center">
         Podcast
       </h1>
