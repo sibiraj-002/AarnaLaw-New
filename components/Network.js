@@ -1,5 +1,5 @@
-import Image from "next/image"
-import React from "react"
+import Image from "next/image";
+import React from "react";
 
 const Network = () => {
   return (
@@ -18,6 +18,7 @@ const Network = () => {
             alt="World Map"
           />
         </div>
+        {/* New Delhi */}
         <div className="absolute bottom-[37%] left-[47%] md:bottom-[58%] md:left-[66%] sm:bottom-[8%] sm:left-[6%] ">
           <div className="md:space-y-7 space-y-3 ms-5">
             <button
@@ -46,7 +47,7 @@ const Network = () => {
             </div>
           </div>
         </div>
-
+        {/* Mumbai */}
         <div className="absolute bottom-[37%] right-[47%] md:bottom-[50.5%] md:right-[32.9%]">
           <div className="md:space-y-7 space-y-3 ms-5">
             <button
@@ -77,7 +78,7 @@ const Network = () => {
             </div>
           </div>
         </div>
-
+        {/* Bengaluru */}
         <div className="absolute bottom-[37%] left-[47%] md:bottom-[46%] md:left-[66%]">
           <div className="md:space-y-7 space-y-3 ms-5">
             <div className="flex gap-3 justify-center ms-6">
@@ -117,7 +118,7 @@ const Network = () => {
         Contact Our Experts
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default Network
+export default Network;
