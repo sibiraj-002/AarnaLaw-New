@@ -1,5 +1,5 @@
-import Image from "next/image";
-import React from "react";
+import React from "react"
+import Image from "next/image"
 
 const Network = () => {
   return (
@@ -18,22 +18,20 @@ const Network = () => {
             alt="World Map"
           />
         </div>
+
         {/* New Delhi */}
-        <div className="absolute bottom-[37%] left-[47%] md:bottom-[58%] md:left-[66%] sm:bottom-[8%] sm:left-[6%] ">
+        <div className="absolute bottom-[37%] left-[47%] md:bottom-[58%] md:left-[66%] sm:bottom-[8%] sm:left-[6%] group">
           <div className="md:space-y-7 space-y-3 ms-5">
             <button
-              data-popover-target="new-delhi"
               type="button"
               className="text-white text-xs bg-custom-red hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium md:text-sm px-2 md:px-5 py-1 text-center dark:bg-custom-red dark:hover:bg-red-700 dark:focus:ring-red-700"
             >
               New Delhi
             </button>
-
             <div
-              data-popover
               id="new-delhi"
               role="tooltip"
-              className="absolute z-10 invisible inline-block text-center text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800"
+              className="absolute z-10 inline-block text-center text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 group-hover:opacity-100 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800"
             >
               <div className="px-3 py-2 bg-custom-red text-white">
                 <p>
@@ -47,23 +45,20 @@ const Network = () => {
             </div>
           </div>
         </div>
+
         {/* Mumbai */}
-        <div className="absolute bottom-[37%] right-[47%] md:bottom-[50.5%] md:right-[32.9%]">
+        <div className="absolute bottom-[37%] right-[47%] md:bottom-[50.5%] md:right-[32.9%] group">
           <div className="md:space-y-7 space-y-3 ms-5">
             <button
-              data-popover-target="popover-bottom"
-              data-popover-placement="bottom"
               type="button"
               className="text-white bg-custom-red hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium text-xs md:text-sm px-2 md:px-5 py-1 text-center dark:bg-custom-red dark:hover:bg-red-700 dark:focus:ring-red-700"
             >
               Mumbai
             </button>
-
             <div
-              data-popover
               id="popover-bottom"
               role="tooltip"
-              className="absolute z-10 invisible inline-block text-center text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800"
+              className="absolute z-10 inline-block text-center text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 group-hover:opacity-100 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800"
             >
               <div className="px-3 py-2 bg-custom-red text-white">
                 <p>
@@ -78,24 +73,21 @@ const Network = () => {
             </div>
           </div>
         </div>
+
         {/* Bengaluru */}
-        <div className="absolute bottom-[37%] left-[47%] md:bottom-[46%] md:left-[66%]">
+        <div className="absolute bottom-[37%] left-[47%] md:bottom-[46%] md:left-[66%] group">
           <div className="md:space-y-7 space-y-3 ms-5">
             <div className="flex gap-3 justify-center ms-6">
               <button
-                data-popover-target="popover-bottom-a"
-                data-popover-placement="bottom"
                 type="button"
                 className="text-white bg-custom-red hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium text-xs md:text-sm px-2 md:px-5 py-1 text-center dark:bg-custom-red dark:hover:bg-red-700 dark:focus:ring-red-700"
               >
                 Bengaluru
               </button>
-
               <div
-                data-popover
                 id="popover-bottom-a"
                 role="tooltip"
-                className="absolute z-10 invisible inline-block text-center text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800"
+                className="absolute z-10 inline-block text-center text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 group-hover:opacity-100 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800"
               >
                 <div className="px-3 py-2 bg-custom-red text-white">
                   <p>
@@ -118,7 +110,9 @@ const Network = () => {
         Contact Our Experts
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default Network;
+export default Network
+
+

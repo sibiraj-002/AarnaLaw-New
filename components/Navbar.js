@@ -81,9 +81,36 @@ const Navbar = () => {
                   className=" hover:text-white  hover:bg-red-700 block px-4 py-2 text-sm"
                   role="menuitem"
                   tabIndex="-1"
-                  onClick={() => handleOptionClick("es")}
+                  onClick={() => handleOptionClick("ka")}
                 >
-                  Spanish
+                  ಕನ್ನಡ (Kannada)
+                </a>
+                <a
+                  href="#"
+                  className=" hover:text-white  hover:bg-red-700 block px-4 py-2 text-sm"
+                  role="menuitem"
+                  tabIndex="-1"
+                  onClick={() => handleOptionClick("ta")}
+                >
+                  தமிழ் (Tamil)
+                </a>
+                <a
+                  href="#"
+                  className=" hover:text-white  hover:bg-red-700 block px-4 py-2 text-sm"
+                  role="menuitem"
+                  tabIndex="-1"
+                  onClick={() => handleOptionClick("hi")}
+                >
+                  हिंदी (Hindi)
+                </a>
+                <a
+                  href="#"
+                  className=" hover:text-white  hover:bg-red-700 block px-4 py-2 text-sm"
+                  role="menuitem"
+                  tabIndex="-1"
+                  onClick={() => handleOptionClick("tel")}
+                >
+                  తెలుగు (Telugu)
                 </a>
                 <a
                   href="#"
@@ -92,16 +119,25 @@ const Navbar = () => {
                   tabIndex="-1"
                   onClick={() => handleOptionClick("fr")}
                 >
-                  French
+                  française (French)
                 </a>
                 <a
                   href="#"
                   className=" hover:text-white  hover:bg-red-700 block px-4 py-2 text-sm"
                   role="menuitem"
                   tabIndex="-1"
-                  onClick={() => handleOptionClick("de")}
+                  onClick={() => handleOptionClick("ja")}
                 >
-                  German
+                  日本語 (Japanese)
+                </a>
+                <a
+                  href="#"
+                  className=" hover:text-white  hover:bg-red-700 block px-4 py-2 text-sm"
+                  role="menuitem"
+                  tabIndex="-1"
+                  onClick={() => handleOptionClick("es")}
+                >
+                  Española (spanish )
                 </a>
                 <a
                   href="#"
@@ -110,7 +146,61 @@ const Navbar = () => {
                   tabIndex="-1"
                   onClick={() => handleOptionClick("zh")}
                 >
-                  Chinese
+                  中國人 (Chinese)
+                </a>
+                <a
+                  href="#"
+                  className=" hover:text-white  hover:bg-red-700 block px-4 py-2 text-sm"
+                  role="menuitem"
+                  tabIndex="-1"
+                  onClick={() => handleOptionClick("ar")}
+                >
+                  عربي (Arabic)
+                </a>
+                <a
+                  href="#"
+                  className=" hover:text-white  hover:bg-red-700 block px-4 py-2 text-sm"
+                  role="menuitem"
+                  tabIndex="-1"
+                  onClick={() => handleOptionClick("ko")}
+                >
+                  한국인 (Korean)
+                </a>
+                <a
+                  href="#"
+                  className=" hover:text-white  hover:bg-red-700 block px-4 py-2 text-sm"
+                  role="menuitem"
+                  tabIndex="-1"
+                  onClick={() => handleOptionClick("gu")}
+                >
+                  ગુજરાતી (Gujarati)
+                </a>
+                <a
+                  href="#"
+                  className=" hover:text-white  hover:bg-red-700 block px-4 py-2 text-sm"
+                  role="menuitem"
+                  tabIndex="-1"
+                  onClick={() => handleOptionClick("ru")}
+                >
+                  русский (Russian)
+                </a>
+                <a
+                  href="#"
+                  className=" hover:text-white  hover:bg-red-700 block px-4 py-2 text-sm"
+                  role="menuitem"
+                  tabIndex="-1"
+                  onClick={() => handleOptionClick("de")}
+                >
+                  Deutsch (German)
+                </a>
+                <a
+                  href="#"
+                  className=" hover:text-white  hover:bg-red-700 block px-4 py-2 text-sm"
+                  role="menuitem"
+                  tabIndex="-1"
+                  onClick={() => handleOptionClick("ml")}
+                >
+                  മലയാളം (Malayalam)
                 </a>
               </div>
             </div>
