@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -6,6 +6,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 const Navbar = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleMouseEnter = () => {
     setIsSearchActive(true);
@@ -22,6 +23,10 @@ const Navbar = () => {
   const handleOptionClick = (value) => {
     console.log(`Selected: ${value}`);
     setIsOpen(false);
+  };
+
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -207,6 +212,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
+
       <nav className="absolute bg-white dark:bg-gray-900 w-11/12 md:w-10/12 z-20 my-20 border-b border-gray-200 dark:border-gray-600 shadow-2xl">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative">
           <a
@@ -234,6 +240,7 @@ const Navbar = () => {
               className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
               aria-controls="navbar-sticky"
               aria-expanded="false"
+              onClick={handleMobileMenuToggle}
             >
               <span className="sr-only">Open main menu</span>
               <svg
@@ -254,7 +261,9 @@ const Navbar = () => {
             </button>
           </div>
           <div
-            className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 relative"
+            className={`items-center justify-between w-full md:flex md:w-auto md:order-1 relative ${
+              isMobileMenuOpen ? "block" : "hidden"
+            }`}
             id="navbar-sticky"
           >
             <ul
@@ -302,23 +311,37 @@ const Navbar = () => {
                   Careers
                 </a>
               </li>
+              <li className="z-10 block md:hidden pb-10">
+                <div className="absolute left-0 right-0 z-30 mb-5">
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    className="border border-gray-300 p-1 "
+                  />
+                  <i className="text-custom-blue bi bi-search ps-3"></i>
+                </div>
+              </li>
             </ul>
 
             <div
-              className="relative z-40 flex items-center justify-between lg:ps-10"
+              className="relative z-40 items-center justify-between lg:px-10 hidden md:flex"
               onMouseEnter={handleMouseEnter}
               // onMouseLeave={handleMouseLeave}
             >
               <i className="text-custom-blue bi bi-search"></i>
-              {isSearchActive && (
-                <div className="absolute left-0 right-0 z-30">
-                  <input
-                    type="text"
-                    placeholder="Search..."
-                    className="border border-gray-300 p-2"
-                  />
-                </div>
-              )}
+              <div
+                className={`absolute left-50 right-1 start-1 z-30 transition-transform duration-300 ease-in-out ${
+                  isSearchActive
+                    ? "translate-x-0 opacity-100"
+                    : "translate-x-full opacity-0"
+                }`}
+              >
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="border border-gray-300 p-2 w-48 md:w-64 rounded-md focus:outline-none"
+                />
+              </div>
             </div>
           </div>
         </div>
