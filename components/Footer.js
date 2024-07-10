@@ -17,31 +17,32 @@ const Footer = () => {
             position: fixed;
             right: 2rem;
             bottom: 1rem;
-            font-size: 1.5rem;
-            font-family: 'Montserrat', sans-serif;
             cursor: pointer;
-            border-radius: 7px;
-            background: #222422;
-            border: 2px solid #d4d6d4;
-            color: #d4d6d4;
+            border-radius: 50px;
+            background : #1E396A;
+            border: 1px solid #ffffff;
             padding: 0.25rem;
             opacity: 0;
             transform: translateY(100px);
             transition: all 0.5s ease;
-            font-weight: 300;
-            margin:20px
+            margin: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-            .scroll_top:hover {
-            color: #ffffff;
+        .scroll_top img {
+            width: 50px; 
+            height: 50px;
+        }
+        .scroll_top:hover {
             transform: scale(0.9);
         }
-
-  `}
+        `}
       </style>
       <ScrollToTop
         displayType={"text"}
-        text="Back to Top"
-        className="custom-scroll-to-top"
+        className="scroll_top"
+        text={<img src="/home-page/Back_to_top.svg" alt="Scroll to top" />}
       />
 
       <div className="bg-custom-blue px-5 md:px-20 py-7">
