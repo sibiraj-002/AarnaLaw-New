@@ -2,11 +2,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import "../styles/navbar.css";
 
 const Navbar = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [data, setData] = useState([]);
 
   const handleMouseEnter = () => {
     setIsSearchActive(true);
@@ -20,13 +22,43 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleOptionClick = (value) => {
-    console.log(`Selected: ${value}`);
-    setIsOpen(false);
-  };
+  // const handleOptionClick = (value) => {
+  //   console.log(`Selected: ${value}`);
+  //   setIsOpen(false);
+  // };
 
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleOptionClick = (slug) => {
+    console.log(`Selected: ${slug}`);
+    // Navigate to the landing page based on the slug
+    window.location.href = `/insights/${slug}`; // Adjust the URL structure as per your routing setup
+  };
+
+  const handleSearch = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior if applicable
+
+    const search = e.target.value;
+    console.log(search);
+
+    try {
+      console.log("fetching...");
+      const response = await fetch(
+        `https://www.aarnalaw.com/wp-json/wp/v2/posts?_embed&search=${search}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const results = await response.json();
+      console.log(results);
+      setData(results);
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   return (
@@ -214,20 +246,20 @@ const Navbar = () => {
       </div>
 
       <nav className="absolute bg-white dark:bg-gray-900 w-11/12 md:w-10/12 z-20 my-20 border-b border-gray-200 dark:border-gray-600 shadow-2xl">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative">
+        <div className="max-w-screen-xxl flex flex-wrap items-center justify-between mx-auto p-4 relative">
           <a
             href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <Image
-              src="home-page/logo.svg"
+              src="/home-page/logo.svg"
               height={60}
               width={200}
               alt="aarnalaw-logo"
               className="w-32 md:w-48"
             />
           </a>
-          <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse me-0 pe-0">
             <button
               type="button"
               className="border border-custom-red text-custom-red hover:bg-custom-red hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -311,6 +343,8 @@ const Navbar = () => {
                   Careers
                 </a>
               </li>
+
+              {/* Mobile view */}
               <li className="z-10 block md:hidden pb-10">
                 <div className="absolute left-0 right-0 z-30 mb-5">
                   <input
@@ -322,26 +356,52 @@ const Navbar = () => {
                 </div>
               </li>
             </ul>
+          </div>
 
-            <div
-              className="relative z-40 items-center justify-between lg:px-10 hidden md:flex"
-              onMouseEnter={handleMouseEnter}
-              // onMouseLeave={handleMouseLeave}
-            >
-              <i className="text-custom-blue bi bi-search"></i>
-              <div
-                className={`absolute left-50 right-1 start-1 z-30 transition-transform duration-300 ease-in-out ${
-                  isSearchActive
-                    ? "translate-x-0 opacity-100"
-                    : "translate-x-full opacity-0"
-                }`}
-              >
+          <div className="relative lg:order-1">
+            <div className="search-box z-40 text-end hidden md:flex flex-col justify-center items-center">
+              <div className="relative">
+                <button className="btn-search">
+                  <i className="text-custom-blue bi bi-search"></i>
+                </button>
                 <input
                   type="text"
-                  placeholder="Search..."
-                  className="border border-gray-300 p-2 w-48 md:w-64 rounded-md focus:outline-none"
+                  className="input-search"
+                  placeholder="Type to Search..."
+                  onChange={handleSearch}
                 />
               </div>
+              {data.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-2 max-h-60 overflow-y-auto no-scrollbar bg-white p-2 text-start">
+                  <ul>
+                    {data.map((item, index) => (
+                      <li
+                        key={index}
+                        className=""
+                        onClick={() => handleOptionClick(item.slug)}
+                      >
+                        <div className="flex hover:bg-blue-950 hover:text-white p-2 border-b cursor-pointer items-center">
+                          {item._embedded &&
+                            item._embedded["wp:featuredmedia"] && (
+                              <div className="mr-2">
+                                <img
+                                  src={
+                                    item._embedded["wp:featuredmedia"][0]
+                                      .source_url
+                                  }
+                                  alt={item.title.rendered}
+                                  className="w-40 h-auto object-cover" // Ensure equal height and width, expand width
+                                  
+                                />
+                              </div>
+                            )}
+                          <span>{item.title.rendered}</span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>

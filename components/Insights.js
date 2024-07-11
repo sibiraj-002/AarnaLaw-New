@@ -8,6 +8,7 @@ import { insights } from "@utils/data";
 import Link from "next/link";
 import { leftArrow, rightArrow } from "@utils/Icon";
 
+
 function HomeBanner() {
   const [insightsData, setInsightsData] = useState([]);
   const sliderRef = useRef(null);
@@ -15,26 +16,40 @@ function HomeBanner() {
   useEffect(() => {
     const fetchInsights = async () => {
       try {
-        const response = await fetch(
-          "https://www.aarnalaw.com/wp-json/wp/v2/posts?_embed"
+        const response = await fetch("https://www.aarnalaw.com/wp-json/wp/v2/posts?_embed");
+        const posts = await response.json();
+
+        const fetchMedia = async (mediaId) => {
+          const mediaResponse = await fetch(`https://www.aarnalaw.com/wp-json/wp/v2/media/${mediaId}`);
+          const mediaData = await mediaResponse.json();
+          return mediaData.source_url;
+        };
+
+        const latestInsights = await Promise.all(
+          posts
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .slice(0, 8)
+            .map(async (item) => {
+              const imageUrl = await fetchMedia(item.featured_media);
+              return {
+                ...item,
+                imageUrl: imageUrl,
+                title: item.title.rendered,
+                desc: item.yoast_head_json.og_description,
+              };
+            })
         );
-        const data = await response.json();
-        const latestInsights = data
-          .sort((a, b) => new Date(b.date) - new Date(a.date))
-          .slice(0, 6)
-          .map((item) => ({
-            ...item,
-            imageUrl: item["_embedded"]["wp:featuredmedia"][0]["source_url"],
-            title: item["yoast_head_json"]["title"],
-            desc: item["yoast_head_json"]["og_description"],
-          }));
+
         setInsightsData(latestInsights);
+        console.log(latestInsights);
       } catch (error) {
         console.log(error);
       }
     };
+
     fetchInsights();
   }, []);
+
   const NextArrow = () => (
     <div
       className="cursor-pointer bg-custom-blue text-white text-xl p-3 rounded-full hover:bg-custom-red"
@@ -52,7 +67,6 @@ function HomeBanner() {
       {leftArrow}
     </div>
   );
-
 
   const settings = {
     speed: 500,
@@ -106,21 +120,23 @@ function HomeBanner() {
             insightsData.map((item, index) => (
               <div key={index}>
                 <div className="lg:p-4">
-                  <div className="w-full h-[450px] lg:h-[580px] lg:w[500px]  bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 lg:flex flex-col group hover:bg-red-700 transition-colors duration-300">
+                  <div className="w-full h-[450px] lg:h-[580px] lg:w[500px] bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 lg:flex flex-col group hover:bg-red-700 transition-colors duration-300">
                     <img
                       src={item.imageUrl}
                       className="w-full h-[200px] md:h-[280px] object-cover"
                       alt=""
                     />
                     <div className="p-5 flex flex-col items-start flex-grow text-black group-hover:text-white transition-colors duration-300">
-                      <h5 className="text-lg md:text-2xl text-custom-blue font-semibold flex-grow mb-3 group-hover:text-white transition-colors duration-300">
-                        {item.title}
-                      </h5>
-                      <p className="mb-3 font-normal text-custom-gray flex-grow text-sm md:text-base group-hover:text-white transition-colors duration-300">
-                        {item.desc.split(" ").slice(0, 20).join(" ")}
-                      </p>
+                      <h5
+                        className="text-lg md:text-2xl text-custom-blue font-semibold flex-grow mb-3 group-hover:text-white transition-colors duration-300"
+                        dangerouslySetInnerHTML={{ __html: (item.title) }}
+                      />
+                      <p
+                        className="mb-3 font-normal text-custom-gray flex-grow text-sm md:text-base group-hover:text-white transition-colors duration-300"
+                        dangerouslySetInnerHTML={{ __html: (item.desc.split(" ").slice(0, 20).join(" ")) }}
+                      />
                       <Link
-                        href={"/insights"}
+                        href={`/insights/${item.slug}`}
                         className="border border-custom-red text-custom-red px-2 md:px-6 py-2 group-hover:bg-white group-hover:text-custom-red transition-colors duration-300"
                       >
                         View Article
@@ -140,6 +156,7 @@ function HomeBanner() {
 }
 
 export default HomeBanner;
+
 
 // "use client"
 // import React, { useEffect, useRef, useState } from "react"
