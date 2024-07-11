@@ -25,6 +25,8 @@ function HomeBanner() {
           return mediaData.source_url;
         };
 
+        
+
         const latestInsights = await Promise.all(
           posts
             .sort((a, b) => new Date(b.date) - new Date(a.date))
