@@ -9,6 +9,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [data, setData] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   const handleMouseEnter = () => {
     setIsSearchActive(true);
@@ -17,18 +18,11 @@ const Navbar = () => {
   const handleMouseLeave = () => {
     setIsSearchActive(false);
   };
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  // const handleOptionClick = (value) => {
-  //   console.log(`Selected: ${value}`);
-  //   setIsOpen(false);
-  // };
-
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
   };
 
   const handleOptionClick = (slug) => {
@@ -41,6 +35,7 @@ const Navbar = () => {
     e.preventDefault(); // Prevent default form submission behavior if applicable
 
     const search = e.target.value;
+    setSearchInput(search);
     console.log(search);
 
     try {
@@ -58,6 +53,13 @@ const Navbar = () => {
       setData(results);
     } catch (error) {
       console.log("error", error);
+    }
+  };
+
+  const handleSearchClick = () => {
+    if (data.length > 0) {
+      // Navigate to the first search result
+      handleOptionClick(data[0].slug);
     }
   };
 
@@ -174,7 +176,7 @@ const Navbar = () => {
                   tabIndex="-1"
                   onClick={() => handleOptionClick("es")}
                 >
-                  Española (spanish )
+                  Española (Spanish)
                 </a>
                 <a
                   href="#"
@@ -293,7 +295,7 @@ const Navbar = () => {
             </button>
           </div>
           <div
-            className={`items-center justify-between w-full md:flex md:w-auto md:order-1 relative ${
+            className={`items-center justify-between text-center lg:py-5 w-full md:flex md:w-auto md:order-1 relative ${
               isMobileMenuOpen ? "block" : "hidden"
             }`}
             id="navbar-sticky"
@@ -361,7 +363,7 @@ const Navbar = () => {
           <div className="relative lg:order-1">
             <div className="search-box z-40 text-end hidden md:flex flex-col justify-center items-center">
               <div className="relative">
-                <button className="btn-search">
+                <button className="btn-search" onClick={handleSearchClick}>
                   <i className="text-custom-blue bi bi-search"></i>
                 </button>
                 <input
@@ -372,34 +374,33 @@ const Navbar = () => {
                 />
               </div>
               {data.length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-2 max-h-60 overflow-y-auto no-scrollbar bg-white p-2 text-start">
-                  <ul>
-                    {data.map((item, index) => (
-                      <li
-                        key={index}
-                        className=""
-                        onClick={() => handleOptionClick(item.slug)}
-                      >
-                        <div className="flex hover:bg-blue-950 hover:text-white p-2 border-b cursor-pointer items-center">
-                          {item._embedded &&
-                            item._embedded["wp:featuredmedia"] && (
-                              <div className="mr-2">
-                                <img
-                                  src={
-                                    item._embedded["wp:featuredmedia"][0]
-                                      .source_url
-                                  }
-                                  alt={item.title.rendered}
-                                  className="w-40 h-auto object-cover" // Ensure equal height and width, expand width
-                                  
-                                />
-                              </div>
-                            )}
-                          <span>{item.title.rendered}</span>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="absolute top-full mt-2 max-h-80 overflow-y-auto no-scrollbar bg-white p-2 text-start">
+                  {data.map((item, index) => (
+                    <div
+                      key={index}
+                      className=""
+                      onClick={() => handleOptionClick(item.slug)}
+                    >
+                      <div className="flex hover:bg-blue-950 hover:text-white p-2 border-b cursor-pointer items-center">
+                        {item._embedded &&
+                          item._embedded["wp:featuredmedia"] && (
+                            <div className="mr-2" style={{ width: "100px" }}>
+                              <img
+                                src={
+                                  item._embedded["wp:featuredmedia"][0]
+                                    .source_url
+                                }
+                                alt={item.title.rendered}
+                                className="w-full h-auto" // Ensure the image maintains its aspect ratio
+                                width="100"
+                                height="100"
+                              />
+                            </div>
+                          )}
+                        <div className="flex-1 ps-3">{item.title.rendered}</div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
