@@ -1,8 +1,11 @@
 "use client";
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../styles/navbar.css";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -10,6 +13,26 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [data, setData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [showSearchResults, setShowSearchResults] = useState(false);
+
+  // const router = useRouter();
+
+  useEffect(() => {
+    // Event listener to detect clicks outside the search box
+    const handleClickOutside = (event) => {
+      if (event.target.closest(".search-box") === null) {
+        setShowSearchResults(false);
+      }
+    };
+
+    // Attach the event listener
+    document.addEventListener("click", handleClickOutside);
+
+    // Cleanup function to remove the event listener when component unmounts
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   const handleMouseEnter = () => {
     setIsSearchActive(true);
@@ -18,9 +41,11 @@ const Navbar = () => {
   const handleMouseLeave = () => {
     setIsSearchActive(false);
   };
+
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -35,11 +60,15 @@ const Navbar = () => {
     e.preventDefault(); // Prevent default form submission behavior if applicable
 
     const search = e.target.value;
-    setSearchInput(search);
-    console.log(search);
+    setSearchInput(search); // Update search input state
+
+    if (search.trim() === "") {
+      setData([]); // Clear previous search results if search input is empty
+      setShowSearchResults(false); // Hide search results if search input is empty
+      return;
+    }
 
     try {
-      console.log("fetching...");
       const response = await fetch(
         `https://www.aarnalaw.com/wp-json/wp/v2/posts?_embed&search=${search}`
       );
@@ -49,20 +78,25 @@ const Navbar = () => {
       }
 
       const results = await response.json();
-      console.log(results);
-      setData(results);
+      setData(results); // Update state with fetched data
+      setShowSearchResults(true); // Show search results when there are results
+
+      if (results.length === 0) {
+        console.log("No search results found");
+        // Handle no search results found here
+      }
     } catch (error) {
-      console.log("error", error);
+      console.error("Error fetching search results:", error);
     }
   };
 
   const handleSearchClick = () => {
-    if (data.length > 0) {
-      // Navigate to the first search result
-      handleOptionClick(data[0].slug);
-    }
+    console.log(searchInput);
+    // Navigate to search results page with encoded search query
+    window.location.href = `/search-result?q=${encodeURIComponent(
+      searchInput
+    )}`;
   };
-
   return (
     <div
       className="w-full relative flex justify-center"
@@ -295,7 +329,7 @@ const Navbar = () => {
             </button>
           </div>
           <div
-            className={`items-center justify-between text-center lg:py-5 w-full md:flex md:w-auto md:order-1 relative ${
+            className={`items-center justify-between text-center  w-full md:flex md:w-auto md:order-1 relative ${
               isMobileMenuOpen ? "block" : "hidden"
             }`}
             id="navbar-sticky"
@@ -345,65 +379,85 @@ const Navbar = () => {
                   Careers
                 </a>
               </li>
-
-              {/* Mobile view */}
-              <li className="z-10 block md:hidden pb-10">
+            </ul>
+            {/* Mobile view */}
+            {/* <li className="z-10 block md:hidden pb-10">
                 <div className="absolute left-0 right-0 z-30 mb-5">
                   <input
                     type="text"
-                    placeholder="Search..."
-                    className="border border-gray-300 p-1 "
+                    className=""
+                    placeholder="Type to Search..."
+                    onChange={handleSearch}
+                    value={searchInput} // Ensure the input value is managed by state
                   />
-                  <i className="text-custom-blue bi bi-search ps-3"></i>
+                  <Link
+                    className="lg:pt-3"
+                    href={`/search-result?q=${encodeURIComponent(searchInput)}`}
+                  >
+                    <i className="text-custom-blue bi bi-search ps-2"></i>
+                  </Link>
+                </div>
+              </li> */}
+            {/* --- */}
+            <ul>
+              <li className="relative lg:order-1 lg:ps-10">
+                <div className="search-box z-40 text-end flex-col justify-center items-center">
+                  <div className="relative">
+                    <Link
+                      className="btn-search lg:pt-3"
+                      href={`/search-result?q=${encodeURIComponent(
+                        searchInput
+                      )}`}
+                    >
+                      <i className="text-custom-blue bi bi-search"></i>
+                    </Link>
+                    <input
+                      type="text"
+                      className="input-search"
+                      placeholder="Type to Search..."
+                      onChange={handleSearch}
+                      value={searchInput}
+                      onFocus={() => setShowSearchResults(true)} // Show results on input focus
+                    />
+                    {showSearchResults && data.length > 0 && (
+                      <div className="absolute top-full mt-2 max-h-80 overflow-y-auto no-scrollbar bg-white p-2 text-start">
+                        {data.map((item, index) => (
+                          <div
+                            key={index}
+                            className="search-result-item"
+                            onClick={() => handleOptionClick(item.slug)}
+                          >
+                            <div className="lg:flex hover:bg-blue-950 hover:text-white p-2 border-b cursor-pointer items-center">
+                              {item._embedded &&
+                                item._embedded["wp:featuredmedia"] && (
+                                  <div
+                                    className="mr-2"
+                                    style={{ width: "100px" }}
+                                  >
+                                    <img
+                                      src={
+                                        item._embedded["wp:featuredmedia"][0]
+                                          .source_url
+                                      }
+                                      alt={item.title.rendered}
+                                      className="w-full h-auto hidden md:flex"
+                                      width="100"
+                                      height="100"
+                                    />
+                                  </div>
+                                )}
+                              <div className="lg:flex-1 lg:ps-3">
+                                {item.title.rendered}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </li>
             </ul>
-          </div>
-
-          <div className="relative lg:order-1">
-            <div className="search-box z-40 text-end hidden md:flex flex-col justify-center items-center">
-              <div className="relative">
-                <button className="btn-search" onClick={handleSearchClick}>
-                  <i className="text-custom-blue bi bi-search"></i>
-                </button>
-                <input
-                  type="text"
-                  className="input-search"
-                  placeholder="Type to Search..."
-                  onChange={handleSearch}
-                />
-              </div>
-              {data.length > 0 && (
-                <div className="absolute top-full mt-2 max-h-80 overflow-y-auto no-scrollbar bg-white p-2 text-start">
-                  {data.map((item, index) => (
-                    <div
-                      key={index}
-                      className=""
-                      onClick={() => handleOptionClick(item.slug)}
-                    >
-                      <div className="flex hover:bg-blue-950 hover:text-white p-2 border-b cursor-pointer items-center">
-                        {item._embedded &&
-                          item._embedded["wp:featuredmedia"] && (
-                            <div className="mr-2" style={{ width: "100px" }}>
-                              <img
-                                src={
-                                  item._embedded["wp:featuredmedia"][0]
-                                    .source_url
-                                }
-                                alt={item.title.rendered}
-                                className="w-full h-auto" // Ensure the image maintains its aspect ratio
-                                width="100"
-                                height="100"
-                              />
-                            </div>
-                          )}
-                        <div className="flex-1 ps-3">{item.title.rendered}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
           </div>
         </div>
       </nav>

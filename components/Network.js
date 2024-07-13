@@ -20,7 +20,7 @@ const Network = () => {
         </div>
 
         {/* New Delhi */}
-        <div className="absolute bottom-[37%] left-[47%] md:bottom-[58%] md:left-[66%] sm:bottom-[8%] sm:left-[6%] group">
+        <div className="absolute bottom-[37%] left-[47%] md:bottom-[58%] md:left-[66%] sm:bottom-[8%] sm:left-[0%] group ">
           <div className="md:space-y-7 space-y-3 ms-5">
             <button
               type="button"
@@ -31,7 +31,7 @@ const Network = () => {
             <div
               id="new-delhi"
               role="tooltip"
-              className="absolute z-10 inline-block text-center text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 group-hover:opacity-100 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800"
+              className="absolute  lg:flex hidden z-10 text-center text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 group-hover:opacity-100 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800"
             >
               <div className="px-3 py-2 bg-custom-red text-white">
                 <p>
