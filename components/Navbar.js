@@ -399,7 +399,7 @@ const Navbar = () => {
                 </div>
               </li> */}
             {/* --- */}
-            <ul className=" border-gray-100 rounded-lg bg-gray-50">
+            <ul className="">
               <li className="relative lg:order-1 lg:ps-10">
                 <div className="search-box z-40 text-end flex-col justify-center items-center">
                   <div className="relative">
