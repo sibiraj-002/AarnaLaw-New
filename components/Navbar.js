@@ -52,8 +52,10 @@ const Navbar = () => {
 
   const handleOptionClick = (slug) => {
     console.log(`Selected: ${slug}`);
-    // Navigate to the landing page based on the slug
-    window.location.href = `/insights/${slug}`; // Adjust the URL structure as per your routing setup
+    // Update URL without reloading
+    window.history.pushState({}, "", `/insights/${slug}`);
+    // Fetch and display content based on the slug
+    // Implement your logic to fetch data based on the slug and update component state
   };
 
   const handleSearch = async (e) => {
@@ -91,11 +93,11 @@ const Navbar = () => {
   };
 
   const handleSearchClick = () => {
-    console.log(searchInput);
-    // Navigate to search results page with encoded search query
-    window.location.href = `/search-result?q=${encodeURIComponent(
-      searchInput
-    )}`;
+    if (searchInput.trim() !== "") {
+      window.location.href = `/search-result?q=${encodeURIComponent(
+        searchInput
+      )}`;
+    }
   };
   return (
     <div
@@ -403,12 +405,12 @@ const Navbar = () => {
               <li className="relative lg:order-1 lg:ps-4">
                 <div className="search-box z-40 text-end flex-col justify-center items-center">
                   <div className="relative">
-                    <Link
-                      className="btn-search lg:pt-3"
-                      href={searchInput ? `/search-result?q=${encodeURIComponent(searchInput)}` : "#"}
+                    <button
+                      className="btn-search "
+                      onClick={handleSearchClick} // Call handleSearchClick when the search icon is clicked
                     >
-                      <i className="text-custom-blue bi bi-search"></i>
-                    </Link>
+                      <i className="text-custom-blue bi bi-search "></i>
+                    </button>
                     <input
                       type="text"
                       className="input-search"
