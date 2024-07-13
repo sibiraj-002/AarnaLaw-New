@@ -103,7 +103,7 @@ const Navbar = () => {
       onMouseLeave={handleMouseLeave}
     >
       <div className="absolute z-50 flex justify-end space-x-5 my-5 w-11/12 md:w-11/12">
-        <button className="bg-white text-custom-blue hover:text-white hover:bg-red-700 px-10 py-2 shadow-2xl text-sm">
+        <button className="bg-white text-custom-blue hover:text-white hover:bg-red-700 px-10 py-2 shadow-2xl ">
           Log in
         </button>
 
@@ -111,7 +111,7 @@ const Navbar = () => {
           <div>
             <button
               type="button"
-              className="inline-flex justify-center w-full shadow-2xl px-4 py-3 bg-white text-sm text-custom-blue hover:text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="inline-flex justify-center w-full shadow-2xl px-4 py-3 bg-white  text-custom-blue hover:text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={toggleDropdown}
             >
               Translate
@@ -342,7 +342,7 @@ const Navbar = () => {
               <li className="z-10">
                 <a
                   href="#"
-                  className="text-sm block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className=" block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   About Us
                 </a>
@@ -350,7 +350,7 @@ const Navbar = () => {
               <li className="z-10">
                 <a
                   href="#"
-                  className="text-sm block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className=" block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Practice Areas
                 </a>
@@ -358,7 +358,7 @@ const Navbar = () => {
               <li className="z-10">
                 <a
                   href="#"
-                  className="text-sm block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className=" block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Industries
                 </a>
@@ -366,7 +366,7 @@ const Navbar = () => {
               <li className="z-10">
                 <a
                   href="#"
-                  className="text-sm block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className=" block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   News & Insights
                 </a>
@@ -374,7 +374,7 @@ const Navbar = () => {
               <li className="z-10">
                 <a
                   href="#"
-                  className="text-sm block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className=" block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Careers
                 </a>
@@ -405,9 +405,7 @@ const Navbar = () => {
                   <div className="relative">
                     <Link
                       className="btn-search lg:pt-3"
-                      href={`/search-result?q=${encodeURIComponent(
-                        searchInput
-                      )}`}
+                      href={searchInput ? `/search-result?q=${encodeURIComponent(searchInput)}` : "#"}
                     >
                       <i className="text-custom-blue bi bi-search"></i>
                     </Link>
