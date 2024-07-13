@@ -102,8 +102,8 @@ const Navbar = () => {
       className="w-full relative flex justify-center"
       onMouseLeave={handleMouseLeave}
     >
-      <div className="absolute z-50 flex justify-end space-x-5 my-5 w-11/12 md:w-10/12">
-        <button className="bg-white text-custom-blue hover:text-white  hover:bg-red-700 px-10 py-2 shadow-2xl">
+      <div className="absolute z-50 flex justify-end space-x-5 my-5 w-11/12 md:w-11/12">
+        <button className="bg-white text-custom-blue hover:text-white hover:bg-red-700 px-10 py-2 shadow-2xl text-sm">
           Log in
         </button>
 
@@ -111,7 +111,7 @@ const Navbar = () => {
           <div>
             <button
               type="button"
-              className="inline-flex justify-center w-full border border-gray-300 shadow-sm px-4 py-3 bg-white text-sm font-medium text-custom-blue hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="inline-flex justify-center w-full shadow-2xl px-4 py-3 bg-white text-sm text-custom-blue hover:text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               onClick={toggleDropdown}
             >
               Translate
@@ -281,7 +281,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <nav className="absolute bg-white dark:bg-gray-900 w-11/12 md:w-10/12 z-20 my-20 border-b border-gray-200 dark:border-gray-600 shadow-2xl">
+      <nav className="absolute bg-white dark:bg-gray-900 w-11/12 md:w-11/12 z-20 my-20 border-b border-gray-200 dark:border-gray-600 shadow-2xl">
         <div className="max-w-screen-xxl flex flex-wrap items-center justify-between mx-auto p-4 relative">
           <a
             href="/"
@@ -342,7 +342,7 @@ const Navbar = () => {
               <li className="z-10">
                 <a
                   href="#"
-                  className="text-xs block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className="text-sm block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   About Us
                 </a>
@@ -350,7 +350,7 @@ const Navbar = () => {
               <li className="z-10">
                 <a
                   href="#"
-                  className="text-xs block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className="text-sm block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Practice Areas
                 </a>
@@ -358,7 +358,7 @@ const Navbar = () => {
               <li className="z-10">
                 <a
                   href="#"
-                  className="text-xs block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className="text-sm block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Industries
                 </a>
@@ -366,7 +366,7 @@ const Navbar = () => {
               <li className="z-10">
                 <a
                   href="#"
-                  className="text-xs block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className="text-sm block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   News & Insights
                 </a>
@@ -374,7 +374,7 @@ const Navbar = () => {
               <li className="z-10">
                 <a
                   href="#"
-                  className="text-xs block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  className="text-sm block py-2 px-3 text-custom-blue rounded hover:bg-gray-100 md:hover:bg-transparent hover:text-custom-red md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   Careers
                 </a>
@@ -400,7 +400,7 @@ const Navbar = () => {
               </li> */}
             {/* --- */}
             <ul className="">
-              <li className="relative lg:order-1 lg:ps-10">
+              <li className="relative lg:order-1 lg:ps-4">
                 <div className="search-box z-40 text-end flex-col justify-center items-center">
                   <div className="relative">
                     <Link

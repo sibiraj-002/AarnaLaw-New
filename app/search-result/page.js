@@ -69,7 +69,7 @@ const SearchResults = () => {
           ) : (
             <div className="w-full">
               {searchQuery && (
-                <h1 className="text-3xl font-semibold mb-6 text-center">Search results for: {searchQuery}</h1>
+                <h1 className="text-3xl font-semibold mb-4 text-center">Search results for: {searchQuery}</h1>
               )}
               <ul>
                 {searchResults.length > 0 ? (
