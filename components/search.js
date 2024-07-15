@@ -1,5 +1,3 @@
-// components/Search.js
-
 import React, { useState } from "react";
 
 const Search = ({
@@ -12,13 +10,22 @@ const Search = ({
   handleOptionClick,
   setShowSearchResults,
 }) => {
-    
+  const handleKeyDownEvent = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // Prevents default form submission behavior
+      handleSearch();
+      window.location.href = `/search-result?q=${encodeURIComponent(
+        searchInput
+      )}`;
+    }
+  };
+
   return (
     <ul>
       <li className="relative lg:order-1 lg:ps-4">
         <div className="search-box z-40 text-end flex-col justify-center items-center">
           <div className="relative">
-            <button className="btn-search " onClick={handleSearchClick}>
+            <button className="btn-search" onClick={handleSearchClick}>
               <i className="text-custom-blue bi bi-search"></i>
             </button>
             <input
@@ -27,7 +34,7 @@ const Search = ({
               placeholder="Type to Search..."
               onChange={handleSearch}
               value={searchInput}
-              onKeyDown={handleKeyDown}
+              onKeyDown={handleKeyDownEvent} // Updated to handleKeyDownEvent
               onFocus={() => setShowSearchResults(true)}
             />
             {showSearchResults && data.length > 0 && (

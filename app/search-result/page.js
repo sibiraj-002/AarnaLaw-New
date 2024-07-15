@@ -3,6 +3,7 @@
 import Navbar from "@components/Navbar";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { IoArrowBack } from "react-icons/io5";
 
 const SearchResults = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -47,7 +48,7 @@ const SearchResults = () => {
 
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <style>
         {`
           .truncate {
@@ -61,7 +62,7 @@ const SearchResults = () => {
           }
         `}
       </style>
-      <div className="flex justify-center items-center min-h-screen pt-56">
+      <div className="flex justify-center items-center min-h-screen pt-40">
         <div className="w-full max-w-3xl p-4 rounded-lg">
           {/* <h1 className="text-2xl font-bold mb-4 text-center">Search Results</h1> */}
           {loading ? (
@@ -69,7 +70,9 @@ const SearchResults = () => {
           ) : (
             <div className="w-full">
               {searchQuery && (
-                <h1 className="text-3xl font-semibold mb-4 text-center">Search results for: {searchQuery}</h1>
+                <h1 className="text-4xl font-semibold mb-10 text-center">
+                  Search results for: {searchQuery}
+                </h1>
               )}
               <ul>
                 {searchResults.length > 0 ? (
@@ -80,7 +83,8 @@ const SearchResults = () => {
                           <div className="mx-auto w-full sm:w-[750px]">
                             <img
                               src={
-                                result._embedded["wp:featuredmedia"][0].source_url
+                                result._embedded["wp:featuredmedia"][0]
+                                  .source_url
                               }
                               alt={result.title.rendered}
                               className="w-full h-auto rounded-lg"
@@ -88,25 +92,61 @@ const SearchResults = () => {
                           </div>
                         )}
                       <div className="text-center py-5">
-                      <h2 className="text-xl font-semibold mb-2" dangerouslySetInnerHTML={{ __html: result.title.rendered }} />
-                        <p className="leading-tight truncate" dangerouslySetInnerHTML={{ __html: result.content.rendered }} />
+                        <h2
+                          className="text-xl font-semibold mb-2"
+                          dangerouslySetInnerHTML={{
+                            __html: result.title.rendered,
+                          }}
+                        />
+                        <p
+                          className="leading-tight truncate"
+                          dangerouslySetInnerHTML={{
+                            __html: result.content.rendered,
+                          }}
+                        />
                         <div className=" pt-5">
-                        <Link
-                          href={`/insights/${result.slug}`}
-                          className="text-blue-800 font-semibold"
-                        >
-                          Read more
-                        </Link>
+                          <Link
+                            href={`/insights/${result.slug}`}
+                            className="text-blue-800 font-semibold"
+                          >
+                            Read more
+                          </Link>
                         </div>
                       </div>
                     </li>
                   ))
                 ) : (
                   <div className="text-center">
-                    <p>Your search for <strong>{searchQuery}</strong> did not match any entries.</p>
-                    <p>Don't panic, we'll get through this together. Let's explore our options here.</p>
-                    <p>
-                      You can return <Link href="/" className="font-semibold text-red-800">Home</Link> or search for the page you were looking for.
+                    <p className="text-4xl py-5">
+                      Your search for <strong className="text-red-600">{searchQuery}</strong> did not
+                      match any entries.
+                    </p>
+                    <p className="font-semibold">
+                      Don't panic, we'll get through this together. Let's
+                      explore our options here.
+                    </p>
+                    <p className="py-5">
+                      You can return{" "}
+                      <Link href="/" className="font-semibold text-red-800">
+                        {" "}
+                        {/* Arrow image */}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          className="inline-block w-6 h-6 align-middle"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
+                          />
+                        </svg>{" "}
+                        Home
+                      </Link>{" "}
+                      or search for the page you were looking for.
                     </p>
                   </div>
                 )}

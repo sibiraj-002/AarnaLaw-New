@@ -391,7 +391,6 @@ const Navbar = () => {
           
 
             {/* Search */}
-
               <Search
               handleSearch={handleSearch}
               handleSearchClick={handleSearchClick}
