@@ -93,7 +93,7 @@ const SearchResults = () => {
                         <div className=" pt-5">
                         <Link
                           href={`/insights/${result.slug}`}
-                          className="text-blue-800"
+                          className="text-blue-800 font-semibold"
                         >
                           Read more
                         </Link>
@@ -106,7 +106,7 @@ const SearchResults = () => {
                     <p>Your search for <strong>{searchQuery}</strong> did not match any entries.</p>
                     <p>Don't panic, we'll get through this together. Let's explore our options here.</p>
                     <p>
-                      You can return <Link href="" className="text-red-800">Home</Link> or search for the page you were looking for.
+                      You can return <Link href="/" className="font-semibold text-red-800">Home</Link> or search for the page you were looking for.
                     </p>
                   </div>
                 )}

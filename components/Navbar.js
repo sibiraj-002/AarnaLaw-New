@@ -6,6 +6,7 @@ import "../styles/navbar.css";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import Search from "./search";
 
 const Navbar = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -52,10 +53,7 @@ const Navbar = () => {
 
   const handleOptionClick = (slug) => {
     console.log(`Selected: ${slug}`);
-    // Update URL without reloading
-    window.history.pushState({}, "", `/insights/${slug}`);
-    // Fetch and display content based on the slug
-    // Implement your logic to fetch data based on the slug and update component state
+    window.location.href = `/insights/${slug}`; // Navigate using window.location
   };
 
   const handleSearch = async (e) => {
@@ -99,11 +97,18 @@ const Navbar = () => {
       )}`;
     }
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearch(e); // Trigger search on Enter key press
+    }
+  };
   return (
     <div
       className="w-full relative flex justify-center"
       onMouseLeave={handleMouseLeave}
     >
+      {/* Login and Translate */}
       <div className="absolute z-50 flex justify-end space-x-5 my-5 w-11/12 md:w-11/12">
         <button className="bg-white text-custom-blue hover:text-white hover:bg-red-700 px-10 py-2 shadow-2xl ">
           Log in
@@ -133,6 +138,7 @@ const Navbar = () => {
             </button>
           </div>
 
+          {/* Languages */}
           {isOpen && (
             <div
               className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
@@ -282,7 +288,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-
+      {/* Navigation */}
       <nav className="absolute bg-white dark:bg-gray-900 w-11/12 md:w-11/12 z-20 my-20 border-b border-gray-200 dark:border-gray-600 shadow-2xl">
         <div className="max-w-screen-xxl flex flex-wrap items-center justify-between mx-auto p-4 relative">
           <a
@@ -382,82 +388,20 @@ const Navbar = () => {
                 </a>
               </li>
             </ul>
-            {/* Mobile view */}
-            {/* <li className="z-10 block md:hidden pb-10">
-                <div className="absolute left-0 right-0 z-30 mb-5">
-                  <input
-                    type="text"
-                    className=""
-                    placeholder="Type to Search..."
-                    onChange={handleSearch}
-                    value={searchInput} // Ensure the input value is managed by state
-                  />
-                  <Link
-                    className="lg:pt-3"
-                    href={`/search-result?q=${encodeURIComponent(searchInput)}`}
-                  >
-                    <i className="text-custom-blue bi bi-search ps-2"></i>
-                  </Link>
-                </div>
-              </li> */}
-            {/* --- */}
-            <ul className="">
-              <li className="relative lg:order-1 lg:ps-4">
-                <div className="search-box z-40 text-end flex-col justify-center items-center">
-                  <div className="relative">
-                    <button
-                      className="btn-search "
-                      onClick={handleSearchClick} // Call handleSearchClick when the search icon is clicked
-                    >
-                      <i className="text-custom-blue bi bi-search "></i>
-                    </button>
-                    <input
-                      type="text"
-                      className="input-search"
-                      placeholder="Type to Search..."
-                      onChange={handleSearch}
-                      value={searchInput}
-                      onFocus={() => setShowSearchResults(true)} // Show results on input focus
-                    />
-                    {showSearchResults && data.length > 0 && (
-                      <div className="absolute top-full mt-2 max-h-80 overflow-y-auto no-scrollbar bg-white p-2 text-start">
-                        {data.map((item, index) => (
-                          <div
-                            key={index}
-                            className="search-result-item"
-                            onClick={() => handleOptionClick(item.slug)}
-                          >
-                            <div className="lg:flex hover:bg-blue-950 hover:text-white p-2 border-b cursor-pointer items-center">
-                              {item._embedded &&
-                                item._embedded["wp:featuredmedia"] && (
-                                  <div
-                                    className="mr-2"
-                                    style={{ width: "100px" }}
-                                  >
-                                    <img
-                                      src={
-                                        item._embedded["wp:featuredmedia"][0]
-                                          .source_url
-                                      }
-                                      alt={item.title.rendered}
-                                      className="w-full h-auto hidden md:flex"
-                                      width="100"
-                                      height="100"
-                                    />
-                                  </div>
-                                )}
-                              <div className="lg:flex-1 lg:ps-3">
-                                {item.title.rendered}
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </li>
-            </ul>
+          
+
+            {/* Search */}
+
+              <Search
+              handleSearch={handleSearch}
+              handleSearchClick={handleSearchClick}
+              searchInput={searchInput}
+              handleKeyDown={handleKeyDown}
+              showSearchResults={showSearchResults}
+              data={data}
+              handleOptionClick={handleOptionClick}
+            />
+            
           </div>
         </div>
       </nav>
