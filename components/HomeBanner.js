@@ -1,10 +1,9 @@
-"use client"
-import React from "react"
-import BannerSlider from "react-slick"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
-import Navbar from "@components/Navbar"
-
+"use client";
+import React from "react";
+import BannerSlider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Navbar from "@components/Navbar";
 
 function HomeBanner() {
   var setting = {
@@ -34,7 +33,7 @@ function HomeBanner() {
         },
       },
     ],
-  }
+  };
 
   return (
     <section className="text-center relative w-full mx-auto overflow-hidden md:h-screen">
@@ -50,9 +49,11 @@ function HomeBanner() {
               alt=""
               priority
             />
-            <p className="text-white lg:text-6xl text-3xl font-bold z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
-              Unlocking Abundance
-            </p>
+            <div className="absolute inset-0 flex items-center justify-center text-center z-50">
+              <p className="text-white lg:text-6xl text-3xl font-bold">
+                Unlocking Abundance
+              </p>
+            </div>
           </div>
 
           <div className="relative overflow-hidden">
@@ -64,15 +65,18 @@ function HomeBanner() {
               alt=""
               priority
             />
-            <p className="text-white lg:text-6xl text-3xl font-bold z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
-              Client-Centric Problem Solving
-            </p>
-            <p className="text-white lg:text-2xl text-1xl z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full mt-20">
-              We are a counsel-led Indian legal advisory representing India and people across the world in diverse areas of expertise.
-            </p>
-            <button className="text-red-600 bg-white hover:bg-red-700 hover:text-white p-2 z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-40 rounded-none">
-              Contact Us
-            </button>
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-50">
+              <p className="text-white lg:text-6xl text-3xl font-bold">
+                Client-Centric Problem Solving
+              </p>
+              <p className="text-white lg:text-2xl text-1xl mt-4">
+                We are a counsel-led Indian legal advisory representing India
+                and people across the world in diverse areas of expertise.
+              </p>
+              <button className="text-red-600 bg-white hover:bg-red-700 hover:text-white p-2 mt-8 rounded-none">
+                Contact Us
+              </button>
+            </div>
           </div>
 
           <div className="relative overflow-hidden">
@@ -84,15 +88,19 @@ function HomeBanner() {
               alt=""
               priority
             />
-            <div className="text-white lg:text-6xl text-3xl font-bold z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
-              <p>Rooted in India,</p>
-              <p className="mt-4">Global in Practice.</p>
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-50">
+              <p className="text-white lg:text-6xl text-3xl font-bold">
+                Rooted in India,
+              </p>
+              <p className="mt-4 text-white lg:text-6xl text-3xl font-bold">
+                Global in Practice.
+              </p>
             </div>
           </div>
         </BannerSlider>
       </div>
     </section>
-  )
+  );
 }
 
-export default HomeBanner
+export default HomeBanner;
