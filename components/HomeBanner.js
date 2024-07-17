@@ -65,7 +65,7 @@ function HomeBanner() {
               alt=""
               priority
             />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-50">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-50 lg:pt-0 pt-32">
               <p className="text-white lg:text-6xl text-3xl font-bold">
                 Client-Centric Problem Solving
               </p>
