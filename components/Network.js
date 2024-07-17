@@ -3,6 +3,20 @@ import Image from "next/image"
 
 const Network = () => {
   return (
+    <>
+    <style>
+      {
+        `
+        .i4ewOd-pzNkMb-ornU0b-b0t70b-Bz112c {
+            opacity: 0;
+        }
+        .dIxMhd-bN97Pc-b3rLgd {
+            display: none !important;
+        }
+                    
+        `
+      }
+    </style>
     <div className="flex flex-col items-center gap-10 mb-14 p-8">
       <h1 className="text-custom-blue text-xl md:text-2xl font-semibold">
         A Network Of 75+ Lawyers Around The World
@@ -14,6 +28,7 @@ const Network = () => {
         Contact Our Experts
       </button>
     </div>
+    </>
   )
 }
 
