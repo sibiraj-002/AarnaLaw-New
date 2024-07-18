@@ -34,37 +34,44 @@ const Search = ({
               placeholder="Type to Search..."
               onChange={handleSearch}
               value={searchInput}
-              onKeyDown={handleKeyDownEvent} // Updated to handleKeyDownEvent
+              onKeyDown={handleKeyDownEvent}
               onFocus={() => setShowSearchResults(true)}
             />
-            {showSearchResults && data.length > 0 && (
+            {showSearchResults && searchInput && (
               <div className="absolute top-full mt-2 max-h-80 overflow-y-auto no-scrollbar bg-white p-2 text-start">
-                {data.map((item, index) => (
-                  <div
-                    key={index}
-                    className="search-result-item"
-                    onClick={() => handleOptionClick(item.slug)}
-                  >
-                    <div className="lg:flex hover:bg-blue-950 hover:text-white p-2 border-b cursor-pointer items-center">
-                      {item._embedded && item._embedded["wp:featuredmedia"] && (
-                        <div className="mr-2" style={{ width: "100px" }}>
-                          <img
-                            src={
-                              item._embedded["wp:featuredmedia"][0].source_url
-                            }
-                            alt={item.title.rendered}
-                            className="w-full h-auto hidden md:flex"
-                            width="100"
-                            height="100"
-                          />
+                {data.length > 0 ? (
+                  data.map((item, index) => (
+                    <div
+                      key={index}
+                      className="search-result-item"
+                      onClick={() => handleOptionClick(item.slug)}
+                    >
+                      <div className="lg:flex hover:bg-blue-950 hover:text-white p-2 border-b cursor-pointer items-center">
+                        {item._embedded && item._embedded["wp:featuredmedia"] && (
+                          <div className="mr-2" style={{ width: "100px" }}>
+                            <img
+                              src={
+                                item._embedded["wp:featuredmedia"][0]
+                                  .source_url
+                              }
+                              alt={item.title.rendered}
+                              className="w-full h-auto hidden md:flex"
+                              width="100"
+                              height="100"
+                            />
+                          </div>
+                        )}
+                        <div className="lg:flex-1 lg:ps-3">
+                          {item.title.rendered}
                         </div>
-                      )}
-                      <div className="lg:flex-1 lg:ps-3">
-                        {item.title.rendered}
                       </div>
                     </div>
+                  ))
+                ) : (
+                  <div className="p-2 text-center text-gray-500">
+                    No results found.
                   </div>
-                ))}
+                )}
               </div>
             )}
           </div>
