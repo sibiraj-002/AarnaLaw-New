@@ -8,7 +8,6 @@ import { insights } from "@utils/data";
 import Link from "next/link";
 import { leftArrow, rightArrow } from "@utils/Icon";
 
-
 function HomeBanner() {
   const [insightsData, setInsightsData] = useState([]);
   const sliderRef = useRef(null);
@@ -16,16 +15,18 @@ function HomeBanner() {
   useEffect(() => {
     const fetchInsights = async () => {
       try {
-        const response = await fetch("https://www.aarnalaw.com/wp-json/wp/v2/posts?_embed");
+        const response = await fetch(
+          "https://www.aarnalaw.com/wp-json/wp/v2/posts?_embed"
+        );
         const posts = await response.json();
 
         const fetchMedia = async (mediaId) => {
-          const mediaResponse = await fetch(`https://www.aarnalaw.com/wp-json/wp/v2/media/${mediaId}`);
+          const mediaResponse = await fetch(
+            `https://www.aarnalaw.com/wp-json/wp/v2/media/${mediaId}`
+          );
           const mediaData = await mediaResponse.json();
           return mediaData.source_url;
         };
-
-        
 
         const latestInsights = await Promise.all(
           posts
@@ -37,7 +38,8 @@ function HomeBanner() {
                 ...item,
                 imageUrl: imageUrl,
                 title: item.title.rendered,
-                desc: item.yoast_head_json.og_description,
+                desc: item.acf.excerpt,
+                // desc: item.yoast_head_json.og_description,
               };
             })
         );
@@ -117,49 +119,60 @@ function HomeBanner() {
         </div>
       </div>
       <div className="px-4 mx-auto max-w-screen-xl text-center overflow-hidden w-full md:w-auto">
-  <InsightSlider ref={sliderRef} {...settings} className="z-0 gap-4">
-    {insightsData.length > 0 ? (
-      insightsData.map((item, index) => (
-        <div key={index}>
-          <div className="lg:p-4">
-            <div className="w-full h-[540px] my-auto lg:h-[620px] lg:w[500px] bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-red-700 lg:flex flex-col group transition-colors duration-300 relative">
-              <img
-                src={item.imageUrl}
-                className="w-full h-[200px] md:h-[280px] object-cover"
-                alt=""
-              />
-              <div className="p-5 flex flex-col items-start flex-grow text-black group-hover:text-white transition-colors duration-300">
-                <h5
-                  className="text-lg md:text-2xl text-custom-blue font-semibold flex-grow mb-3 group-hover:text-white transition-colors duration-300"
-                  dangerouslySetInnerHTML={{ __html: item.title }}
-                />
-                <p
+        <InsightSlider ref={sliderRef} {...settings} className="z-0 gap-4">
+          {insightsData.length > 0 ? (
+            insightsData.map((item, index) => (
+              <div key={index}>
+                <div className="lg:p-4">
+                  <div className="w-full h-[580px] my-auto lg:h-[620px] lg:w[500px] bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-red-700 lg:flex flex-col group transition-colors duration-300 relative">
+                    <img
+                      src={item.imageUrl}
+                      className="w-full h-[200px] md:h-[280px] object-cover"
+                      alt=""
+                    />
+                    <div className="p-5 flex flex-col items-start flex-grow text-black group-hover:text-white transition-colors duration-300">
+                      <h5
+                        className="text-lg md:text-2xl text-custom-blue font-semibold flex-grow mb-3 group-hover:text-white transition-colors duration-300"
+                        dangerouslySetInnerHTML={{ __html: item.title }}
+                      />
+                      {/* <p
                   className="mb-3 font-normal text-custom-gray flex-grow text-sm md:text-base group-hover:text-white transition-colors duration-300"
                   dangerouslySetInnerHTML={{ __html: item.desc.split(" ").slice(0, 20).join(" ") }}
-                />
-                <Link
-                  href={`/insights/${item.slug}`}
-                  className="border border-custom-red text-custom-red px-2 md:px-6 py-2 group-hover:bg-white group-hover:text-custom-red transition-colors duration-300 absolute bottom-0 left-0 m-5"
-                >
-                  View Article
-                </Link>
+                /> */}
+                      {item.desc && (
+                        <p
+                          className="mb-5 font-normal text-custom-gray flex-grow text-sm md:text-base group-hover:text-white transition-colors duration-300"
+                          dangerouslySetInnerHTML={{
+                            __html: (() => {
+                              const words = item.desc.split(" ");
+                              return words.length > 20
+                                ? words.slice(0, 25).join(" ") + "..."
+                                : words.join(" ");
+                            })(),
+                          }}
+                        />
+                      )}
+                      <Link
+                        href={`/insights/${item.slug}`}
+                        className="border border-custom-red text-custom-red px-2 md:px-6 py-2 group-hover:bg-white group-hover:text-custom-red transition-colors duration-300 absolute bottom-0 left-0 m-5"
+                      >
+                        View Article
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      ))
-    ) : (
-      <p>Loading...</p>
-    )}
-  </InsightSlider>
-</div>
-
+            ))
+          ) : (
+            <p>Loading...</p>
+          )}
+        </InsightSlider>
+      </div>
     </div>
   );
 }
 
 export default HomeBanner;
-
 
 // "use client"
 // import React, { useEffect, useRef, useState } from "react"
