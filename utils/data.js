@@ -1,39 +1,60 @@
 export const numbers = [
+
   {
     id: 1,
-    rupees: "600+",
-    title: "In dispute",
+    rupees: "100+",
+    title: "Years of Our Legacy",
   },
+
   {
     id: 2,
-    rupees: "300+",
-    title: "Resolved",
+    rupees: "1500+",
+    title: "Clients Served",
   },
+
   {
     id: 3,
-    rupees: "835+",
-    title: "Clients",
+    rupees: "6 Bn $ +",
+    title: "of Disputes Resolved",
   },
-  {
-    id: 4,
-    rupees: "3",
-    title: "Office",
-  },
-  {
-    id: 5,
-    rupees: "1500+",
-    title: "Cases",
-  },
-  {
-    id: 6,
-    rupees: "11",
-    title: "Year legacy",
-  },
-  {
-    id: 7,
-    rupees: "14",
-    title: "Honours & recognition",
-  },
+
+  
+  // {
+  //   id: 1,
+  //   rupees: "600+",
+  //   title: "In dispute",
+  // },
+  // {
+  //   id: 2,
+  //   rupees: "300+",
+  //   title: "Resolved",
+  // },
+  // {
+  //   id: 3,
+  //   rupees: "835+",
+  //   title: "Clients",
+  // },
+  // {
+  //   id: 4,
+  //   rupees: "3",
+  //   title: "Office",
+  // },
+  // {
+  //   id: 5,
+  //   rupees: "1500+",
+  //   title: "Cases",
+  // },
+  // {
+  //   id: 6,
+  //   rupees: "11",
+  //   title: "Year legacy",
+  // },
+  // {
+  //   id: 7,
+  //   rupees: "14",
+  //   title: "Honours & recognition",
+  // },
+
 ]
 
 export const testimonials = [

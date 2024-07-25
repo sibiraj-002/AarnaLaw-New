@@ -12,32 +12,33 @@ const NumbersSpeakItem = ({ numberDetails }) => {
 
   const getSuffix = () => {
     let suffix = ""
-    if (rupees.includes("+")) {
-      suffix = "+"
+    if (rupees.includes("Bn")) {
+      suffix += "Bn "
+    }
+    if (rupees.includes("$")) {
+      suffix += "$ "
     }
     if (rupees.includes("K")) {
-      suffix = "K"
+      suffix += "K"
     }
-    if (rupees.includes("K+")) {
-      suffix = "K+"
+    if (rupees.includes("+")) {
+      suffix += "+"
     }
-    return suffix
+    return suffix.trim()
   }
 
   return (
-    <li className="">
+    <li className="py-10">
       <div className="flex flex-col items-center gap-5">
-        <h1 className="text-5xl text-custom-blue font-semibold">
-          <CountUp
-            end={parseNumber(rupees)}
-            duration={2.5}
-            prefix={rupees.includes("$") ? "$ " : ""}
-            suffix={getSuffix()}
-          />
+        <h1 className="text-5xl text-custom-blue px">
+          <div className="inline-block w-96 text-center">
+            <CountUp
+              end={parseNumber(rupees)}
+              duration={2}
+              suffix={` ${getSuffix()}`}
+            />
+          </div>
         </h1>
-        <span className="text-custom-red font-semibold">
-          - - - - - - - - - - - - - - -
-        </span>
         <p className="text-custom-gray text-xl text-center">{title}</p>
       </div>
     </li>
