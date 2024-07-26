@@ -11,20 +11,27 @@ const NumbersSpeakItem = ({ numberDetails }) => {
   }
 
   const getSuffix = () => {
-    let suffix = ""
     if (rupees.includes("Bn")) {
-      suffix += "Bn "
-    }
-    if (rupees.includes("$")) {
-      suffix += "$ "
+      return " billion"
     }
     if (rupees.includes("K")) {
-      suffix += "K"
+      return "K"
     }
-    if (rupees.includes("+")) {
-      suffix += "+"
+    return ""
+  }
+
+  const getCurrencySymbol = () => {
+    if (rupees.includes("$")) {
+      return "$"
     }
-    return suffix.trim()
+    return ""
+  }
+
+  const getFormattedNumber = (value) => {
+    const suffix = getSuffix()
+    const currency = getCurrencySymbol()
+    const plusSign = rupees.includes("+") ? "+" : ""
+    return `${currency}${value} ${suffix}`.trim() + plusSign
   }
 
   return (
@@ -35,7 +42,7 @@ const NumbersSpeakItem = ({ numberDetails }) => {
             <CountUp
               end={parseNumber(rupees)}
               duration={2}
-              suffix={` ${getSuffix()}`}
+              formattingFn={getFormattedNumber}
             />
           </div>
         </h1>
