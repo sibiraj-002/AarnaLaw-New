@@ -32,8 +32,8 @@ const Testimonials = () => {
 
   var setting = {
     speed: 500,
-    slidesToShow: 1,
-    initialSlide: 1,
+    slidesToShow: 2,
+    initialSlide: 2,
     slidesToScroll: 1,
     fade: false,
     autoplay: false,
@@ -71,14 +71,14 @@ const Testimonials = () => {
             <h2 className="text-custom-blue text-xl md:text-2xl font-semibold">
               Client’s <br /> Testimonials
             </h2>
-            {/* <div className="flex gap-2 justify-end">
+            <div className="flex gap-2 justify-end">
               <PrevArrow />
               <NextArrow />
-            </div> */}
+            </div>
           </div>
         </div>
 
-        <div className="absolute w-full md:w-3/4 gap-10 bottom-1/4 left-1/4">
+        <div className="absolute w-full md:w-3/4 gap-10 bottom-1/4">
           <InsightSlider ref={sliderRef} {...setting}>
             {testimonials.map((item) => (
               <TestimonialsCard key={item.id} testimonialDetails={item} />
