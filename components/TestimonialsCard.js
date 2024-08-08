@@ -9,8 +9,8 @@ const TestimonialsCard = ({ testimonialDetails }) => {
         <Image
           // src={testimonialDetails.imageUrl}
           src="/home-page/dummy.png"
-          width={60}
-          height={60}
+          width={80}
+          height={80}
           className="rounded-full"
           alt=""
         />
@@ -22,12 +22,16 @@ const TestimonialsCard = ({ testimonialDetails }) => {
           </h3>
           <p className="text-custom-gray text-sm md:text-lg">
             {/* {testimonialDetails.post} */}
+            General Counsel
+          </p>
+          <p className="text-custom-gray text-sm md:text-lg">
+            {/* {testimonialDetails.post} */}
             Daimler Trucks India
           </p>
         </div>
       </div>
       <div className="">
-        <p className="text-xs text-custom-gray">
+        <p className="text-sm text-custom-gray">
           {/* {testimonialDetails.desc} */}I wholeheartedly recommend Aarna Law
           and its outstanding team to anyone seeking top-notch legal
           representation".
