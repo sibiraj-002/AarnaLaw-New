@@ -21,7 +21,8 @@ const TestimonialsCard = ({ testimonialDetails }) => {
             Vinay Bhagwan
           </h3>
           <p className="text-custom-gray text-sm md:text-lg">
-            {testimonialDetails.post}
+            {/* {testimonialDetails.post} */}
+            Daimler Trucks India
           </p>
         </div>
       </div>

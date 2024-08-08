@@ -78,7 +78,7 @@ const Testimonials = () => {
           </div>
         </div>
 
-        <div className="absolute w-full md:w-3/4 gap-10 bottom-1/4 left-1/4">
+        <div className="absolute w-full md:w-3/4 gap-10 bottom-1/4 md:left-1/4">
           <InsightSlider ref={sliderRef} {...setting}>
             {testimonials.map((item) => (
               <TestimonialsCard key={item.id} testimonialDetails={item} />
