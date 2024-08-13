@@ -7,7 +7,7 @@ const NumbersSpeak = () => {
       <h1 className="text-custom-red text-2xl font-semibold">
         Our Track Record by Numbers
       </h1>
-      <ul className="flex justify-center flex-wrap gap-6 p-2">
+      <ul className="flex justify-center flex-wrap gap-6 p-0">
         {numbers.map((item) => (
           <NumbersSpeakItem key={item.id} numberDetails={item} />
         ))}

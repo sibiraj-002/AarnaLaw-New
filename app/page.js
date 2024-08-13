@@ -6,7 +6,7 @@ import NumbersSpeak from "@components/NumbersSpeak"
 import OurCredentials from "@components/OurCredentials"
 import OurLegacy from "@components/OurLegacy"
 import Podcasts from "@components/Podcasts"
-import Testimonials from "@components/Testimonials"
+import Testimonials from "../components/Testimonials"
 import WhatWeDo from "@components/WhatWeDo"
 import HomeBanner from "../components/HomeBanner"
 

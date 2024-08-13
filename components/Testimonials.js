@@ -6,7 +6,7 @@ import InsightSlider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { testimonials } from "@utils/data";
-import TestimonialsCard from "./TestimonialsCard";
+import TestimonialsCard from "../components/TestimonialsCard";
 import { leftArrow, rightArrow } from "@utils/Icon";
 
 const Testimonials = () => {
@@ -32,7 +32,7 @@ const Testimonials = () => {
 
   var setting = {
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 2,
     initialSlide: 1,
     slidesToScroll: 1,
     fade: false,
@@ -68,20 +68,22 @@ const Testimonials = () => {
         <div className="flex justify-between -mt-36">
           <div className="bg-custom-blue w-full md:w-[559px] h-[437px] lg:ms-12"></div>
           <div className="self-end text-right space-y-6 mr-2 md:mr-28">
-            <h2 className="text-custom-blue text-xl md:text-2xl font-semibold">
+            <h2 className="text-custom-blue text-xl md:text-2xl font-semibold p-2">
               Client’s <br /> Testimonials
             </h2>
-            {/* <div className="flex gap-2 justify-end">
+            <div className="flex gap-2 justify-end">
               <PrevArrow />
               <NextArrow />
-            </div> */}
+            </div>
           </div>
         </div>
 
-        <div className="absolute w-full md:w-3/4 gap-10 bottom-1/4 md:left-1/4">
+        <div className="absolute w-full md:w-3/4 gap-10 bottom-28 md:right-[200px]">
           <InsightSlider ref={sliderRef} {...setting}>
             {testimonials.map((item) => (
-              <TestimonialsCard key={item.id} testimonialDetails={item} />
+              <div key={item.id} className="h-full"> {/* Added class for height control */}
+                <TestimonialsCard testimonialDetails={item} />
+              </div>
             ))}
           </InsightSlider>
         </div>
