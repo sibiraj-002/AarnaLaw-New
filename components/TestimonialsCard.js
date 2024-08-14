@@ -4,7 +4,7 @@ import Link from "next/link";
 const TestimonialsCard = ({ testimonialDetails }) => {
   return (
     <>
-      <Link href="https://staging.aarnalaw.com/contact/">
+      {/* <Link href="https://staging.aarnalaw.com/contact/"> */}
         <div className="flex flex-col justify-center gap-1 bg-white shadow-lg mb-10 mx-2 p-5 w-auto md:w-[460px] h-[250px]">
           <div className="flex items-center gap-4">
             <div className="flex-1">
@@ -35,8 +35,11 @@ const TestimonialsCard = ({ testimonialDetails }) => {
               {testimonialDetails.desc}
             </p>
           </div>
+          <a href="https://staging.aarnalaw.com/contact/" className="text-custom-blue">
+        Read more
+      </a>
         </div>
-      </Link>
+      {/* </Link> */}
     </>
   );
 };
