@@ -70,12 +70,12 @@ function HomeBanner() {
                 Client-Centric Problem Solving
               </p>
               <p className="text-white lg:text-2xl text-1xl mt-4">
-                We are a counsel-led Indian legal advisory representing India
-                and people across the world in diverse areas of expertise.
+                We are a counsel-led Indian legal advisory firm, representing
+                India and people across the world in diverse areas of expertise.
               </p>
-              <button className="text-red-600 bg-white hover:bg-red-700 hover:text-white p-2 mt-8 rounded-none">
+              {/* <button className="text-red-600 bg-white hover:bg-red-700 hover:text-white p-2 mt-8 rounded-none">
                 Contact Us
-              </button>
+              </button> */}
             </div>
           </div>
 
