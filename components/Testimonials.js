@@ -36,7 +36,7 @@ const Testimonials = () => {
     initialSlide: 1,
     slidesToScroll: 1,
     fade: false,
-    autoplay: false,
+    autoplay: true,
     arrows: false,
     dots: false,
 
