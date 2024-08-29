@@ -33,10 +33,10 @@ const Testimonials = () => {
   var setting = {
     speed: 500,
     slidesToShow: 2,
-    initialSlide: 2,
+    initialSlide: 1,
     slidesToScroll: 1,
     fade: false,
-    autoplay: false,
+    autoplay: true,
     arrows: false,
     dots: false,
 
@@ -68,7 +68,7 @@ const Testimonials = () => {
         <div className="flex justify-between -mt-36">
           <div className="bg-custom-blue w-full md:w-[559px] h-[437px] lg:ms-12"></div>
           <div className="self-end text-right space-y-6 mr-2 md:mr-28">
-            <h2 className="text-custom-blue text-xl md:text-2xl font-semibold">
+            <h2 className="text-custom-blue text-xl md:text-2xl font-semibold p-2">
               Client’s <br /> Testimonials
             </h2>
             <div className="flex gap-2 justify-end">
@@ -78,10 +78,12 @@ const Testimonials = () => {
           </div>
         </div>
 
-        <div className="absolute w-full md:w-3/4 gap-10 bottom-1/4">
+        <div className="absolute w-full md:w-3/4 gap-10 bottom-28 md:right-[200px]">
           <InsightSlider ref={sliderRef} {...setting}>
             {testimonials.map((item) => (
-              <TestimonialsCard key={item.id} testimonialDetails={item} />
+              <div key={item.id} className="h-full"> {/* Added class for height control */}
+                <TestimonialsCard testimonialDetails={item} />
+              </div>
             ))}
           </InsightSlider>
         </div>

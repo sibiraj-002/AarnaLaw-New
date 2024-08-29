@@ -1,14 +1,14 @@
 "use client"
 import Footer from "@components/Footer"
-import Insights from "@components/Insights"
-import Network from "@components/Network"
-import NumbersSpeak from "@components/NumbersSpeak"
-import OurCredentials from "@components/OurCredentials"
-import OurLegacy from "@components/OurLegacy"
-import Podcasts from "@components/Podcasts"
-import Testimonials from "../components/Testimonials"
-import WhatWeDo from "@components/WhatWeDo"
-import HomeBanner from "../components/HomeBanner"
+import Insights from "@components/HomeComponent/Insights"
+import Network from "@components/HomeComponent/Network"
+import NumbersSpeak from "../components/HomeComponent/NumbersSpeak"
+import OurCredentials from "@components/HomeComponent/OurCredentials"
+import OurLegacy from "@components/HomeComponent/OurLegacy"
+import Podcasts from "../components/HomeComponent/Podcasts"
+import Testimonials from "../components/HomeComponent/Testimonials"
+import WhatWeDo from "@components/HomeComponent/WhatWeDo"
+import HomeBanner from "../components/HomeComponent/HomeBanner"
 
 
 export default function Home() {

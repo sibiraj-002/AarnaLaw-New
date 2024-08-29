@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from "react"
-import PodcastCard from "./PodcastCard"
+import PodcastCard from "../HomeComponent/PodcastCard"
 import Link from "next/link"
 
 const Podcasts = () => {

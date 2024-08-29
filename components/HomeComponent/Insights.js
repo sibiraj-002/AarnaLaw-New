@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import InsightSlider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import InsightsCard from "./InsightsCard"; // Import your InsightsCard component here
+ // Import your InsightsCard component here
 import { insights } from "@utils/data";
 import Link from "next/link";
 import { leftArrow, rightArrow } from "@utils/Icon";
