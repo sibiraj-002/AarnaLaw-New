@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import InsightSlider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
- // Import your InsightsCard component here
+// Import your InsightsCard component here
 import { insights } from "@utils/data";
 import Link from "next/link";
 import { leftArrow, rightArrow } from "@utils/Icon";
@@ -110,56 +110,62 @@ function HomeBanner() {
   return (
     <div className="flex flex-col md:flex-row bg-white md:absolute md:left-0 md:right-0 items-center gap-0 md:-mt-24 md:ml-24 md:pt-10 ">
       <div className="flex flex-col items-center gap-7">
-        <h1 className="text-custom-red md:writing-mode-vertical-rl transform md:rotate-180 text-[80px] font-bold m-0 p-0">
+        <h1 className="text-2xl md:text-[80px] text-custom-red md:writing-mode-vertical-rl transform md:rotate-180 font-bold m-0 md:p-0 py-5">
           Insights
         </h1>
-        <div className="flex gap-2 justify-end pb-5">
-          <PrevArrow />
-          <NextArrow />
-        </div>
+        <div className="gap-2 justify-end pb-5 hidden md:flex">
+  <PrevArrow />
+  <NextArrow />
+</div>
       </div>
       <div className="px-4 mx-auto max-w-screen-xl text-center overflow-hidden w-full md:w-auto">
-  <InsightSlider ref={sliderRef} {...settings} className="z-0 gap-4">
-    {insightsData.length > 0 ? (
-      insightsData.map((item, index) => (
-        <div key={index}>
-          <div className="lg:p-4">
-            <div className="w-full h-[540px] my-auto lg:h-[620px] lg:w-[500px] bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-red-700 lg:flex flex-col group transition-colors duration-300 relative">
-              <img
-                src={item.imageUrl}
-                className="w-full h-[200px] md:h-[280px] object-cover"
-                alt=""
-              />
-              <div className="p-5 flex flex-col items-start flex-grow text-black group-hover:text-white transition-colors duration-300">
-                <h5
-                  className="text-lg md:text-2xl text-custom-blue font-semibold mb-3 group-hover:text-white transition-colors duration-300 overflow-hidden line-clamp-2 min-h-[3rem] max-h-[4.5rem]"
-                  dangerouslySetInnerHTML={{ __html: item.title }}
-                />
-                {item.desc && (
-                  <p
-                    className="mb-5 font-normal text-custom-gray text-sm md:text-base group-hover:text-white transition-colors duration-300 overflow-hidden line-clamp-3 justify-center text-center lg:mt-10"
-                    dangerouslySetInnerHTML={{
-                      __html: item.desc,
-                    }}
-                  />
-                )}
-                <Link
-                  href={`/insights/${item.slug}`}
-                  className="border border-custom-red text-custom-red px-2 md:px-6 py-2 group-hover:bg-white group-hover:text-custom-red transition-colors duration-300 absolute bottom-0 left-0 m-5"
-                >
-                  View Article
-                </Link>
+        <InsightSlider ref={sliderRef} {...settings} className="z-0 gap-4">
+          {insightsData.length > 0 ? (
+            insightsData.map((item, index) => (
+              <div key={index}>
+                <div className="lg:p-4">
+                  <div className="w-full h-[540px] my-auto lg:h-[620px] lg:w-[500px] bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-red-700 lg:flex flex-col group transition-colors duration-300 relative">
+                    <img
+                      src={item.imageUrl}
+                      className="w-full h-[200px] md:h-[280px] object-cover"
+                      alt=""
+                    />
+                    <div className="p-5 flex flex-col items-start flex-grow text-black group-hover:text-white transition-colors duration-300">
+                      <h5
+                        className="text-lg md:text-2xl text-custom-blue font-semibold mb-3 group-hover:text-white transition-colors duration-300 overflow-hidden line-clamp-2 min-h-[3rem] max-h-[4.5rem]"
+                        dangerouslySetInnerHTML={{ __html: item.title }}
+                      />
+                      {item.desc && (
+                        <p
+                          className="mb-5 font-normal text-custom-gray text-sm md:text-base group-hover:text-white transition-colors duration-300 overflow-hidden line-clamp-3 justify-center text-center lg:mt-10"
+                          dangerouslySetInnerHTML={{
+                            __html: item.desc,
+                          }}
+                        />
+                      )}
+                      <Link
+                        href={`/insights/${item.slug}`}
+                        className="border border-custom-red text-custom-red px-2 md:px-6 py-2 group-hover:bg-white group-hover:text-custom-red transition-colors duration-300 absolute bottom-0 left-0 m-5"
+                      >
+                        View Article
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      ))
-    ) : (
-      <p>Loading...</p>
-    )}
-  </InsightSlider>
-</div>
+            ))
+          ) : (
+            <p>Loading...</p>
+          )}
+        </InsightSlider>
 
+        {/* Arrows for mobile view */}
+      <div className="flex gap-2 justify-center py-5 md:hidden">
+        <PrevArrow />
+        <NextArrow />
+      </div>
+
+      </div>
     </div>
   );
 }

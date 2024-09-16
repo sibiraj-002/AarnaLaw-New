@@ -66,7 +66,7 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <button className="border border-custom-red text-xs md:text-base md:px-6 px-2 py-2 text-white hover:bg-white hover:border-white hover:text-custom-red">
+            <button className="mx-2 border border-custom-red text-xs md:text-base md:px-6 px-2 py-2 text-white hover:bg-white hover:border-white hover:text-custom-red">
               Subscribe to newsletter
             </button>
           </div>
