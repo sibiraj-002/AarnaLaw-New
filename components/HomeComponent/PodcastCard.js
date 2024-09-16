@@ -35,7 +35,7 @@ const PodcastCard = ({ podcastDetails }) => {
               Posted On {formattedDate}
             </p>
             <button
-              className="bg-custom-blue text-white p-3 rounded-full hover:bg-custom-red md:ml-4"
+              className="bg-custom-blue text-white p-3 rounded-full md:ml-4 transition-colors duration-300 group-hover:bg-custom-red"
               onClick={handlePlayPause}
             >
               {isPlaying ? pause : play}
