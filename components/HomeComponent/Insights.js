@@ -114,9 +114,9 @@ function HomeBanner() {
           Insights
         </h1>
         <div className="gap-2 justify-end pb-5 hidden md:flex">
-  <PrevArrow />
-  <NextArrow />
-</div>
+          <PrevArrow />
+          <NextArrow />
+        </div>
       </div>
       <div className="px-4 mx-auto max-w-screen-xl text-center overflow-hidden w-full md:w-auto">
         <InsightSlider ref={sliderRef} {...settings} className="z-0 gap-4">
@@ -124,7 +124,7 @@ function HomeBanner() {
             insightsData.map((item, index) => (
               <div key={index}>
                 <div className="lg:p-4">
-                  <div className="w-full h-[540px] my-auto lg:h-[620px] lg:w-[500px] bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-red-700 lg:flex flex-col group transition-colors duration-300 relative">
+                  <div className="w-full h-[450px] my-auto lg:h-[620px] lg:w-[500px] bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-red-700 lg:flex flex-col group transition-colors duration-300 relative">
                     <img
                       src={item.imageUrl}
                       className="w-full h-[200px] md:h-[280px] object-cover"
@@ -160,11 +160,10 @@ function HomeBanner() {
         </InsightSlider>
 
         {/* Arrows for mobile view */}
-      <div className="flex gap-2 justify-center py-5 md:hidden">
-        <PrevArrow />
-        <NextArrow />
-      </div>
-
+        <div className="flex gap-2 justify-center py-5 md:hidden">
+          <PrevArrow />
+          <NextArrow />
+        </div>
       </div>
     </div>
   );

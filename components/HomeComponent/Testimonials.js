@@ -62,13 +62,23 @@ const Testimonials = () => {
   return (
     <>
       <div className="container mx-auto relative mb-14">
-        <div className="flex justify-end mr-40">
-          <Image src="/home-page/quotes.svg" width={276} height={215} alt="" />
+        <h2 className="text-custom-blue text-xl md:text-2xl font-semibold p-2 block md:hidden">
+          Client’s Testimonials
+        </h2>
+
+        <div className="flex justify-end mr-10 ">
+          <Image
+            src="/home-page/quotes.svg"
+            className="hidden md:block"
+            width={276}
+            height={215}
+            alt=""
+          />
         </div>
-        <div className="flex justify-between -mt-36">
-          <div className="bg-custom-blue w-full md:w-[559px] h-[437px] lg:ms-12"></div>
+        <div className="flex justify-between md:-mt-36 mt-2">
+          <div className="bg-custom-blue w-[260px] md:w-[559px] md:h-[437px] h-96 lg:ms-12"></div>
           <div className="self-end text-right space-y-6 mr-2 md:mr-28">
-            <h2 className="text-custom-blue text-xl md:text-2xl font-semibold p-2">
+            <h2 className="text-custom-blue text-xl md:text-2xl font-semibold p-2 hidden md:block">
               Client’s <br /> Testimonials
             </h2>
             <div className="flex gap-2 justify-end">
@@ -78,10 +88,12 @@ const Testimonials = () => {
           </div>
         </div>
 
-        <div className="absolute w-full md:w-3/4 gap-10 bottom-28 md:right-[200px]">
+        <div className="absolute w-full md:w-3/4 gap-10 md:bottom-28 bottom-10 md:right-[200px]">
           <InsightSlider ref={sliderRef} {...setting}>
             {testimonials.map((item) => (
-              <div key={item.id} className="h-full"> {/* Added class for height control */}
+              <div key={item.id} className="h-full">
+                {" "}
+                {/* Added class for height control */}
                 <TestimonialsCard testimonialDetails={item} />
               </div>
             ))}

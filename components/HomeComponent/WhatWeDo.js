@@ -14,8 +14,17 @@ const WhatWeDo = () => {
         />
       </div>
       <div className="w-full md:w-1/2 p-8">
+        {/* mobile */}
+        <h1 className="text-custom-red text-2xl font-bold text-center md:hidden">
+          What We Do
+        </h1>
+
         <div className="flex flex-col justify-between items-start h-full w-full md:w-5/6">
-          <h1 className="text-custom-red text-2xl font-bold">What We Do</h1>
+          {/* Desktop */}
+          <h1 className="text-custom-red text-2xl font-bold hidden md:block">
+            What We Do
+          </h1>
+
           <h2 className="text-custom-blue text-4xl font-semibold mt-4 md:mt-0">
             We are an award-winning advisory with an international perspective.
           </h2>
@@ -30,7 +39,7 @@ const WhatWeDo = () => {
             navigating highly specialized areas of national and international
             law, we advise with uncompromising integrity.
           </p>
-          <button className="border border-custom-red px-6 py-2 text-custom-red hover:bg-custom-red hover:text-white mt-4 md:mt-0">
+          <button className="border border-custom-red px-6 py-2 text-custom-red hover:bg-custom-red hover:text-white mt-4 mx-auto block md:mx-0">
             Our Services
           </button>
         </div>

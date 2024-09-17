@@ -4,8 +4,15 @@ const OurLegacy = () => {
   return (
     <div className="container mx-auto flex flex-col-reverse mb-14 md:flex-row">
       <div className="w-full md:w-1/2 p-8">
+        {/* Mobile */}
+        <h1 className="text-custom-blue text-2xl font-bold text-center md:hidden">
+          Our Legacy
+        </h1>
         <div className="flex flex-col justify-between items-start h-full w-full md:w-5/6">
-          <h1 className="text-custom-blue text-2xl font-bold">Our Legacy</h1>
+          {/* Desktop */}
+          <h1 className="text-custom-blue text-2xl font-bold hidden md:block">
+            Our Legacy
+          </h1>
           <h2 className="text-custom-red text-4xl font-semibold mt-4 md:mt-0">
             Founded on over nine decades of commitment and service
           </h2>
@@ -15,7 +22,7 @@ const OurLegacy = () => {
             clients’ best interests without compromising on our principles of
             natural law, justice, and compassion.
           </p>
-          <button className="border border-custom-blue px-4 py-2 text-custom-blue hover:bg-custom-blue hover:text-white mt-4 md:mt-0">
+          <button className="border border-custom-blue px-4 py-2 text-custom-blue hover:bg-custom-blue hover:text-white mt-4 md:mt-0 md:mx-0 mx-auto">
             Our Firm
           </button>
         </div>
