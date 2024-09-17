@@ -120,7 +120,7 @@ const Podcasts = () => {
         <div className="flex justify-center mt-10">
           <Link
             href="/podcast"
-            className="border border-custom-blue px-6 py-2 text-custom-blue hover:bg-custom-blue hover:text-white"
+            className="border border-custom-blue px-6 py-2 text-custom-blue md:hover:bg-custom-blue md:hover:text-white"
           >
             View all
           </Link>

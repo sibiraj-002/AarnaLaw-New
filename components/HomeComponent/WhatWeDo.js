@@ -25,15 +25,15 @@ const WhatWeDo = () => {
             What We Do
           </h1>
 
-          <h2 className="text-custom-blue text-4xl font-semibold mt-4 md:mt-0">
+          <h2 className="text-custom-blue text-4xl font-semibold mt-4 md:mt-0 ">
             We are an award-winning advisory with an international perspective.
           </h2>
-          <p className="text-custom-gray mt-4 md:mt-0">
+          <p className="text-custom-gray mt-4 md:mt-0 ">
             Our counsel-led, tech-enabled practice envisions justice as an
             essential service in this global economy of international trade and
             fluid borders.
           </p>
-          <p className="text-custom-gray mt-2 md:-mt-10">
+          <p className="text-custom-gray mt-2 md:-mt-10 ">
             We counsel domestic, foreign, and diasporic clients on a range of
             issues. From minimizing regulatory, financial, and legal risk to
             navigating highly specialized areas of national and international

@@ -35,7 +35,7 @@ const NumbersSpeakItem = ({ numberDetails }) => {
   }
 
   return (
-    <li className="py-10">
+    <li className="py-5">
       <div className="flex flex-col items-center gap-5">
         <h1 className="text-5xl text-custom-blue px">
           <div className="inline-block w-96 text-center">

@@ -62,7 +62,7 @@ const Testimonials = () => {
   return (
     <>
       <div className="container mx-auto relative mb-14">
-        <h2 className="text-custom-blue text-xl md:text-2xl font-semibold p-2 block md:hidden">
+        <h2 className="text-custom-blue text-2xl font-semibold py-5 block md:hidden text-center">
           Client’s Testimonials
         </h2>
 

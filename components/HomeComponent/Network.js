@@ -21,7 +21,7 @@ const Network = () => {
         `}
       </style>
       <div className="flex flex-col items-center gap-10 mb-14 lg:p-8 p-2">
-        <h1 className="text-custom-blue text-xl md:text-2xl font-semibold">
+        <h1 className="text-custom-blue text-xl md:text-2xl font-semibold text-center">
           A Network Of 75+ Lawyers Around The World
         </h1>
 
