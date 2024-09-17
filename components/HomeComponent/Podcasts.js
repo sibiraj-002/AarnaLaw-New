@@ -93,7 +93,7 @@ const Podcasts = () => {
 
   return (
     <>
-      <div className="container mx-auto relative mb-14 mt-60 md:mt-[650px] flex flex-col items-center">
+      <div className="container mx-auto relative mb-14 mt-6 md:mt-[650px] flex flex-col items-center">
         <h1 className="text-custom-blue text-2xl font-semibold text-center mb-8">
           Podcast
         </h1>
@@ -114,7 +114,7 @@ const Podcasts = () => {
             </InsightSlider>
           </div>
         ) : (
-          <p className="text-center mt-10">No podcasts available</p>
+          <p className="text-center mt-10">Loading...</p>
         )}
 
         <div className="flex justify-center mt-10">
